@@ -1,0 +1,42 @@
+
+/* Atlas finish pass: additive, theme-aware refinements */
+:root{color-scheme:dark;--atlas-radius:16px;--atlas-focus:color-mix(in srgb,var(--accent) 75%,white)}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-feature-settings:"kern";line-height:1.48;text-rendering:optimizeLegibility}
+button,input,select,textarea{transition:border-color .15s ease,background-color .15s ease,box-shadow .15s ease}
+button{min-height:40px;font-weight:550}button:active{transform:translateY(1px)}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,[role="button"]:focus-visible{outline:3px solid var(--atlas-focus);outline-offset:2px}
+button:disabled{opacity:.5;cursor:not-allowed}
+input::placeholder,textarea::placeholder{color:var(--muted);opacity:.78}
+.card,.preview,.layout-preview,.world-hero{box-shadow:0 8px 30px #00000013}
+.card{border-color:color-mix(in srgb,var(--ink) 11%,transparent);border-radius:var(--atlas-radius)}
+.card h2,.card h3{letter-spacing:-.015em}
+h1,h2,h3{line-height:1.2;letter-spacing:-.025em}
+.nav{border-radius:10px;padding:11px 13px}.nav.active{box-shadow:inset 3px 0 0 var(--accent)}
+.sidebar{background:color-mix(in srgb,var(--panel) 94%,var(--bg));border-color:color-mix(in srgb,var(--ink) 12%,transparent)}
+.brand{letter-spacing:.11em}.status{display:inline-flex;align-items:center;gap:6px}
+.status:before{content:"";width:7px;height:7px;background:#65cfa2;border-radius:50%;flex:none}
+.status:has(+ .row) {max-width:100%}
+.top{gap:12px}.top .row{gap:8px}.top #openMedia{border-color:color-mix(in srgb,var(--accent) 65%,transparent)}
+.grid{gap:16px}.split{gap:18px}.toolbar{gap:10px}
+.world-hero{position:relative;overflow:hidden;border-radius:22px}.world-hero:after{content:"";position:absolute;inset:auto -15% -95% 45%;height:230px;background:radial-gradient(ellipse,color-mix(in srgb,var(--accent) 14%,transparent),transparent 70%);pointer-events:none}
+.world-stat{transition:transform .15s,border-color .15s}.world-stat:hover{border-color:var(--accent);transform:translateY(-2px)}
+.dashboard-link:hover,.item:hover{border-color:var(--accent)}
+.atlas-embed,.media-tile{transition:border-color .15s,box-shadow .15s}
+.atlas-embed:hover{box-shadow:0 8px 28px #0002}
+textarea{line-height:1.6}main{padding-bottom:60px}
+.atlas-search-open{display:inline-flex;align-items:center;gap:8px}
+.atlas-search-hint{font-size:11px;opacity:.7;border:1px solid currentColor;border-radius:5px;padding:2px 5px}
+.atlas-command-overlay{position:fixed;inset:0;z-index:120;background:#05070cbb;backdrop-filter:blur(7px);display:flex;align-items:flex-start;justify-content:center;padding:max(12vh,60px) 14px 24px}
+.atlas-command-overlay[hidden]{display:none!important}
+.atlas-command{width:min(580px,100%);background:var(--panel);color:var(--ink);border:1px solid color-mix(in srgb,var(--accent) 40%,transparent);border-radius:20px;box-shadow:0 25px 90px #0008;padding:16px;max-height:75dvh;display:flex;flex-direction:column;gap:10px}
+.atlas-command-head{display:flex;justify-content:space-between;align-items:center;gap:12px}.atlas-command-head h2{margin:0;font-size:18px}
+#atlasCommandInput{font-size:16px;min-height:48px}
+.atlas-command-results{overflow:auto;min-height:50px;overscroll-behavior:contain}
+.atlas-command-result{width:100%;display:flex;justify-content:space-between;align-items:center;gap:12px;text-align:left;margin:5px 0;padding:12px;background:var(--card)}
+.atlas-command-result small{color:var(--muted);font-size:12px}
+.atlas-command-result[aria-selected="true"]{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 12%,var(--card))}
+.atlas-command-empty{padding:20px 8px;color:var(--muted)}
+@media(max-width:750px){main{padding:14px 14px calc(88px + env(safe-area-inset-bottom))}.card{padding:15px}.grid{gap:12px}.top{align-items:flex-start}.atlas-search-hint{display:none}.atlas-command-overlay{padding:calc(7vh + env(safe-area-inset-top)) 10px 16px}.atlas-command{max-height:80dvh;border-radius:16px}.mobile-bottom button{min-height:48px}.world-stat strong{font-size:23px}}
+@media(hover:none){button:active{transform:none}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}

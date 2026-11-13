@@ -1,0 +1,24 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#111323"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="Atlas"><meta name="mobile-web-app-capable" content="yes"><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="icons/atlas-180.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/atlas-192.png"><title>Atlas — Worldbuilding</title><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="media-ui.css"><link rel="stylesheet" href="polish.css"></head><body><div id="app"><div class="atlas-loading" role="status">Opening Atlas…</div></div><script>
+window.atlasShowStartupError = function(error) {
+  const root = document.getElementById('app');
+  const message = error && (error.stack || error.message) || String(error);
+  console.error('Atlas startup failed:', error);
+  root.innerHTML = '';
+  const panel = document.createElement('section');
+  panel.className = 'atlas-startup-error';
+  const title = document.createElement('h1'); title.textContent = 'Atlas could not start';
+  const explanation = document.createElement('p'); explanation.textContent = 'Your saved worlds have not been deleted. Copy the technical error below to diagnose the problem.';
+  const detail = document.createElement('pre'); detail.textContent = message;
+  const copy = document.createElement('button'); copy.textContent = 'Copy error';
+  copy.onclick = () => navigator.clipboard?.writeText(message).catch(() => {});
+  panel.append(title, explanation, detail, copy); root.append(panel);
+};
+window.addEventListener('error', e => {
+  if (document.getElementById('app')?.querySelector('.atlas-loading')) window.atlasShowStartupError(e.error || e.message);
+});
+window.addEventListener('unhandledrejection', e => {
+  if (document.getElementById('app')?.querySelector('.atlas-loading')) window.atlasShowStartupError(e.reason);
+});
+</script><script type="module">
+import('./app.js').catch(error => window.atlasShowStartupError(error));
+</script><script src="pwa.js" defer></script></body></html>
